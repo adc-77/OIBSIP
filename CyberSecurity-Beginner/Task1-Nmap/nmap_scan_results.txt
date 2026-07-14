@@ -1,0 +1,80 @@
+Basic Network Scanning with Nmap
+
+Target:
+scanme.nmap.org
+
+==================================================
+
+1. Basic Scan
+Command:
+nmap scanme.nmap.org
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-09 17:19 +0000
+Nmap scan report for scanme.nmap.org (45.33.32.156)
+Host is up (0.47s latency).
+Other addresses for scanme.nmap.org (not scanned): 2600:3c01::f03c:91ff:fe18:bb2f
+Not shown: 997 filtered tcp ports (no-response)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+80/tcp    open  http
+31337/tcp open  Elite
+
+Nmap done: 1 IP address (1 host up) scanned in 104.65 seconds
+
+==================================================
+
+2. Service Version Scan
+Command:
+sudo nmap -sV scanme.nmap.org
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-09 17:30 +0000
+Nmap scan report for scanme.nmap.org (45.33.32.156)
+Host is up (0.0039s latency).
+Other addresses for scanme.nmap.org (not scanned): 2600:3c01::f03c:91ff:fe18:bb2f
+Not shown: 700 filtered tcp ports (no-response), 296 closed tcp ports (reset)
+PORT      STATE SERVICE    VERSION
+22/tcp    open  ssh        OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)
+80/tcp    open  http       Apache httpd 2.4.7 ((Ubuntu))
+9929/tcp  open  nping-echo Nping echo
+31337/tcp open  tcpwrapped
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 411.02 seconds
+
+==================================================
+
+3. Operating System Detection
+Command:
+sudo nmap -O scanme.nmap.org
+
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-09 18:00 +0000
+Nmap scan report for scanme.nmap.org (45.33.32.156)
+Host is up (0.38s latency).
+Other addresses for scanme.nmap.org (not scanned): 2600:3c01::f03c:91ff:fe18:bb2f
+Not shown: 987 filtered tcp ports (no-response)
+PORT      STATE  SERVICE
+22/tcp    open   ssh
+80/tcp    open   http
+1053/tcp  closed remote-as
+1761/tcp  closed landesk-rc
+2126/tcp  closed pktcable-cops
+2323/tcp  closed 3d-nfsd
+2809/tcp  closed corbaloc
+5985/tcp  closed wsman
+8192/tcp  closed sophos
+9929/tcp  open   nping-echo
+19842/tcp closed unknown
+31337/tcp open   Elite
+32770/tcp closed sometimes-rpc3
+Device type: VoIP adapter|bridge
+Running (JUST GUESSING): AT&T embedded (88%), Oracle Virtualbox (86%), Slirp (86%)
+OS CPE: cpe:/o:oracle:virtualbox cpe:/a:danny_gasparovski:slirp
+Aggressive OS guesses: AT&T BGW210 voice gateway (88%), Oracle Virtualbox Slirp NAT bridge (86%)
+No exact OS matches for host (test conditions non-ideal).
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 39.09 seconds
+
+==================================================
+
